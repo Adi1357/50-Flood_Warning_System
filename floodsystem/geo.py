@@ -9,11 +9,20 @@ geographical data.
 from utils import sorted_by_key  # noqa
 from haversine import haversine, Unit
 from stationdata import build_station_list
+from station import MonitoringStation
 
 
-s=build_station_list()
 
-def stations_by_distance( stations, p):
-    return haversine(stations.coord, p) 
+def stations_by_distance(stations, p):
+    distance = []
 
-stations_by_distance(s, (2,3))
+    
+    for station in stations:
+        distance.append((station.name,station.town, haversine(station.coord,p)))               
+ 
+    return print(sorted_by_key((distance),(2)))
+
+   
+
+stations= build_station_list()
+stations_by_distance(stations, (52.2053, 0.1218))
