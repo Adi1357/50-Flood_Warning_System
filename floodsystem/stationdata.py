@@ -5,9 +5,11 @@
 JSON objects fetched from the Internet and
 
 """
+##removed from . in data fetcher line as was having trouble importing
+##removed .from station line as was having trouble importing
 
-from . import datafetcher
-from .station import MonitoringStation
+import datafetcher
+from station import MonitoringStation
 
 
 def build_station_list(use_cache=True):
@@ -60,7 +62,7 @@ def build_station_list(use_cache=True):
             # skip over
             pass
 
-    return stations
+    return print(stations)
 
 
 def update_water_levels(stations):

@@ -5,5 +5,15 @@
 geographical data.
 
 """
+##removed .utils as i was having problems importing the function
+from utils import sorted_by_key  # noqa
+from haversine import haversine, Unit
+from stationdata import build_station_list
 
-from .utils import sorted_by_key  # noqa
+
+s=build_station_list()
+
+def stations_by_distance( stations, p):
+    return haversine(stations.coord, p) 
+
+stations_by_distance(s, (2,3))
