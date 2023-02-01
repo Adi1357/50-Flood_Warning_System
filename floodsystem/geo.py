@@ -6,10 +6,10 @@ geographical data.
 
 """
 ##removed .utils as i was having problems importing the function
-from utils import sorted_by_key  # noqa
+from floodsystem.utils import sorted_by_key  # noqa
 from haversine import haversine, Unit
-from stationdata import build_station_list
-from station import MonitoringStation
+from floodsystem.stationdata import build_station_list
+from floodsystem.station import MonitoringStation
 from collections import defaultdict
 
 
@@ -17,15 +17,22 @@ from collections import defaultdict
 def stations_by_distance(stations, p):
     distance = []
 
-    
     for station in stations:
         distance.append((station.name,station.town, haversine(station.coord,p)))               
  
     return (sorted_by_key((distance),(2)))
 
 
+#Task 1C
+def stations_within_radius(stations, centre, r):
+    list_of_stations_in_radius = []
+    
+    for station in stations:
+        if haversine(station.coord, centre) <= r:
+            list_of_stations_in_radius.append(station)
 
-
+    return [station.name for station in list_of_stations_in_radius]
+    
 #def stations_within_radius(stations, centre, r):
 
 
