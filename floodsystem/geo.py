@@ -33,8 +33,6 @@ def stations_within_radius(stations, centre, r):
 
     return [station.name for station in list_of_stations_in_radius]
     
-#def stations_within_radius(stations, centre, r):
-
 
 #Task 1D
 def rivers_with_station(stations):
