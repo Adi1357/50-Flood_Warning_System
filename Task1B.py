@@ -13,6 +13,6 @@ def run():
     print(f'The last 10 elements are : {listx[-10:]}')
 
 if __name__ == "__main__":
-    print("*** Task 1A: CUED Part IB Flood Warning System ***")
+    print("*** Task 1B: CUED Part IB Flood Warning System ***")
     run()
 
