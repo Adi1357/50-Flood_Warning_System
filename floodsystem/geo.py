@@ -42,7 +42,8 @@ def rivers_with_station(stations):
     for station in stations:
         rivers.add(station.river)
     rivers = sorted(rivers)
-    return print(f"{len(rivers)} stations. First 10 - [{rivers[slice(10)]}]")
+    return rivers
+    
 
 def stations_by_river(stations):
     ret = {}
@@ -64,8 +65,5 @@ def stations_by_river(stations):
 
     return ret
 
-stations= build_station_list()
-station ={}
 
-print(stations_by_river(stations)['River Aire'])
 
