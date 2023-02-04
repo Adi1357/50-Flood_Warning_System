@@ -10,13 +10,13 @@ def run():
     """Requirements for Task 1D"""
     stations = build_station_list()
     listx= rivers_with_station(stations)
-    print(f"{len(listx)} stations. First 10 - [{listx[slice(10)]}]")
+    print(f"{len(listx)} stations. First 10 - [{listx[slice(10)]}]\n")
 
 
     dictx = stations_by_river(stations)
-    print(dictx['River Aire'])
-    print(dictx['River Cam'])
-    print(dictx['River Thames'])
+    print(f"The dictionary for the River Aire {dictx['River Aire']}\n")
+    print(f"The dictionary for the River Cam {dictx['River Cam']}\n")
+    print(f"The dictionary for the River Thames {dictx['River Thames']}\n")
 
 
 
