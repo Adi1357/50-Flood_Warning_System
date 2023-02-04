@@ -9,7 +9,7 @@ geographical data.
 from floodsystem.utils import sorted_by_key  # noqa
 from haversine import haversine, Unit
 from floodsystem.stationdata import build_station_list
-from floodsystem.station import MonitoringStation
+from floodsystem.station import MonitoringStation'
 from collections import defaultdict
 
 
