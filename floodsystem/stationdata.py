@@ -8,7 +8,7 @@ JSON objects fetched from the Internet and
 ##removed from . in data fetcher line as was having trouble importing
 ##removed .from station line as was having trouble importing
 
-import floodsystem.datafetcher
+from floodsystem.datafetcher import datafetcher
 from floodsystem.station import MonitoringStation
 
 def build_station_list(use_cache=True):
