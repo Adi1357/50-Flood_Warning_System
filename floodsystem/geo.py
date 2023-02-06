@@ -50,7 +50,6 @@ def stations_by_river(stations):
       #      ret[station.river].append(station.name)
        # else:
         #    ret[station.river] = [station.name]
-  
 
     for station in stations:
         if station.river not in ret:
@@ -59,9 +58,16 @@ def stations_by_river(stations):
             ret[station.river].append(station.name)
             ret[station.river].sort()
         
-    
-
     return ret
 
+#Task 1E
+
+def rivers_by_station_number(stations, N):
+    stations_by_riv = stations_by_river(stations)
+    rivers_with_stations = []
+    for river in stations_by_riv:
+        rivers_with_stations.append((river,len(stations_by_riv[river])))
+    rivers_with_stations = sorted_by_key(rivers_with_stations, 1)
+    return (rivers_with_stations[-N:]).reverse()
 
 
