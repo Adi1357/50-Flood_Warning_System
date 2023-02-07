@@ -27,13 +27,34 @@ test_station_2 = MonitoringStation(station_id= "test_station_2", measure_id = "m
 test_station_3 = MonitoringStation(station_id= "test_station_3", measure_id = "measure_station_3", label = "some station_3", coord= (3.0, 4.0), typical_range = (-0.3, 4.5), river = "River 3", town= "My Town_3")
 test_station_4 = MonitoringStation(station_id= "test_station_4", measure_id = "measure_station_4", label = "some station_4", coord= (4.0, 5.0), typical_range = (-1.3, 4.45), river = "River 4", town= "My Town_4")
 
+test_station_5 = MonitoringStation(station_id= "test_station_5", measure_id = "measure_station_5", label = "some station_1", coord= (1.0, 2.1), typical_range = (-2.3, 3.4446), river = "River 1", town= "My Town_5")
+test_station_6 = MonitoringStation(station_id= "test_station_6", measure_id = "measure_station_6", label = "some station_2", coord= (2.0, 3.1), typical_range = (-12.3, 45.46), river = "River 1", town= "My Town_6")
+test_station_7 = MonitoringStation(station_id= "test_station_7", measure_id = "measure_station_7", label = "some station_3", coord= (3.0, 4.1), typical_range = (-0.3, 4.6), river = "River 1", town= "My Town_7")
+test_station_8 = MonitoringStation(station_id= "test_station_8", measure_id = "measure_station_8", label = "some station_4", coord= (4.0, 5.1), typical_range = (-1.3, 4.46), river = "River 2", town= "My Town_8")
+
+
 test_list= (test_station_1, test_station_2, test_station_3, test_station_4)
+test_list_2= (test_station_1, test_station_2, test_station_3, test_station_4, test_station_5, test_station_6, test_station_7, test_station_8)
+
 #Test 1B
 def test_stations_by_distance():
     test_list_1B = stations_by_distance(test_list, (1,1))
     assert test_list_1B[0][0:2] == ("some station_1","My Town_1")
     assert test_list_1B[1][0:2] == ("some station_2","My Town_2")
     assert test_list_1B[2][0:2] == ("some station_3","My Town_3")
+
+#Test 1C
+def test_stations_within_radius():
+    #One latitude and longitude degree is approximately 120km near the equator
+    test_list_1C_a = stations_within_radius(test_list, (0.0, 1.0), 2*120)
+    test_list_1C_b = stations_within_radius(test_list, (0.0, 1.0), 3*120)
+    test_list_1C_c = stations_within_radius(test_list, (0.0, 1.0), 4*120)
+    assert len(test_list_1C_a) == 1
+    assert len(test_list_1C_b) == 2
+    assert len(test_list_1C_c) == 3
+
+    #Further assertion of validity of actual data
+    assert len(stations_within_radius(stations, (0, 0), 40000)) == len(stations)
 
 #Test 1D
 def test_rivers_with_station():
@@ -46,22 +67,30 @@ def test_stations_by_river():
     assert test_dic['River 2'] == ['some station_2']
     assert test_dic['River 3'] == ['some station_3']
 
-#Test 1F
+#Test 1E
+def test_rivers_by_station_number():
+    test_list_1E = rivers_by_station_number(test_list_2, 3)
+    assert test_list_1E[0] == ('River 1', 4)
+    assert test_list_1E[1] == ('River 2', 2)
+    assert ('River 3', 1) in test_list_1E[2:] 
+    assert ('River 4', 1) in test_list_1E[2:] 
 
+    #Further assertion of validity of actual data
+    for n in range(5):
+        assert len(rivers_by_station_number(stations, n)) >= n 
+
+
+#Test 1F
 def test_inconsistent_typical_range_stations():
     test_inconsistentx_list = inconsistent_typical_range_stations(test_list)
     assert test_inconsistentx_list == []
+    
 
 
-
-
-
-
-def test_1C():
-    assert len(stations_within_radius(stations, (0, 0), 40000)) == len(stations)
-
-
-
-def test_1E():
-    assert len(rivers_by_station_number(stations, 9)) == 9
-
+#Running Tests
+test_stations_by_distance()
+test_stations_within_radius()
+test_rivers_with_station()
+test_stations_by_river()
+test_rivers_by_station_number()
+test_inconsistent_typical_range_stations()
