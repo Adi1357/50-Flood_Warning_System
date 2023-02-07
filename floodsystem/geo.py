@@ -67,6 +67,9 @@ def rivers_by_station_number(stations, N):
     for i in range(N):
         rivers_with_most_stations.append(rivers_with_stations[index])
         index -= 1
+    while -1 * index <= len(rivers_with_stations) and rivers_with_stations[index][1] == rivers_with_stations[index+1][1]:
+        rivers_with_most_stations.append(rivers_with_stations[index])
+        index -= 1
     return rivers_with_most_stations
 
 
