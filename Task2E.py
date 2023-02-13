@@ -1,11 +1,8 @@
-# Copyright (C) 2018 Garth N. Wells
-#
-# SPDX-License-Identifier: MIT
-
 import datetime
 
 from floodsystem.datafetcher import fetch_measure_levels
 from floodsystem.stationdata import build_station_list
+from floodsystem.plot import plot_water_levels
 
 
 def run():
@@ -28,27 +25,17 @@ def run():
         print("Station {} could not be found".format(station_name))
         return
 
-    # Alternative find station 'Cam' using the Python 'next' function
-    # (https://docs.python.org/3/library/functions.html#next). Raises
-    # an exception if station is not found.
-    # try:
-    #     station_cam = next(s for s in stations if s.name == station_name)
-    # except StopIteration:
-    #     print("Station {} could not be found".format(station_name))
-    #     return
-
-    # Fetch data over past 2 days
     dt = 2
     dates, levels = fetch_measure_levels(
         station_cam.measure_id, dt=datetime.timedelta(days=dt))
-    
- 
 
     # Print level history
     for date, level in zip(dates, levels):
         print(date, level)
 
+    plot_water_levels(,,dt,)
+
 
 if __name__ == "__main__":
-    print("*** Task 2D: CUED Part IA Flood Warning System ***")
+    print("*** Task 2E: CUED Part IA Flood Warning System ***")
     run()
