@@ -8,10 +8,13 @@ from floodsystem.flood import stations_highest_rel_level
 def run():
     stations = build_station_list()
     update_water_levels(stations)
+    station_list = stations_highest_rel_level(stations, 10)
+    print(station_list)
 
-    for stat in stations_highest_rel_level(stations, 10):
-        print(stat[0],stat[1])
+    # for station in stations_highest_rel_level(stations, 10):
+    #     print(station.name,station.relative_water_level())
 
 if __name__ == "__main__":
     print("*** Task 2C: CUED Part IA Flood Warning System ***")
     run()
+    
