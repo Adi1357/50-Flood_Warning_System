@@ -12,5 +12,5 @@ def run():
     print(sorted(stations_within_10km_of_Cam_city_centre))
 
 if __name__ == "__main__":
-    print("*** Task 1C: CUED Part IB Flood Warning System ***")
+    print("*** Task 1C: CUED Part IA Flood Warning System ***")
     run()
