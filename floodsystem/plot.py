@@ -1,5 +1,5 @@
 import matplotlib.pyplot as plt
-from datetime import datetime, timedelta
+import datetime
 from floodsystem.datafetcher import fetch_measure_levels
 
 def plot_water_levels(station, dt, levels):
