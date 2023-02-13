@@ -7,33 +7,43 @@ from floodsystem.plot import plot_water_levels
 
 def run():
 
+
     # Build list of stations
-    stations = build_station_list()
+    #  stations = build_station_list()
 
-    # Station name to find
-    station_name = "Cam"
+    #  dates, levels = fetch_measure_levels(stations[0].measure_id, dt=datetime.timedelta(days=10))
+    #  date_list=[]
+    #  level_list=[]
+    #  for date, level in zip(dates, levels):
+    #     date_list.append(date)
+    #     level_list.append(level)
+     
+    #  plot_water_levels(stations[0],10, level_list)
+    print("Hi")
+    # # Station name to find
+    # station_name = "Cam"
 
-    # Find station
-    station_cam = None
-    for station in stations:
-        if station.name == station_name:
-            station_cam = station
-            break
+    # # Find station
+    # station_cam = None
+    # for station in stations:
+    #     if station.name == station_name:
+    #         station_cam = station
+    #         break
 
-    # Check that station could be found. Return if not found.
-    if not station_cam:
-        print("Station {} could not be found".format(station_name))
-        return
+    # # Check that station could be found. Return if not found.
+    # if not station_cam:
+    #     print("Station {} could not be found".format(station_name))
+    #     return
 
-    dt = 2
-    dates, levels = fetch_measure_levels(
-        station_cam.measure_id, dt=datetime.timedelta(days=dt))
+    # dt = 2
+    # dates, levels = fetch_measure_levels(
+    #     station_cam.measure_id, dt=datetime.timedelta(days=dt))
 
-    # Print level history
-    for date, level in zip(dates, levels):
-        print(date, level)
+    # # Print level history
+    # for date, level in zip(dates, levels):
+    #     print(date, level)
 
-    plot_water_levels(,,dt,)
+    # plot_water_levels(,,dt,)
 
 
 if __name__ == "__main__":
