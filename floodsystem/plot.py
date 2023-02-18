@@ -1,6 +1,9 @@
+import numpy as np
+import matplotlib.dates as mdt
 import matplotlib.pyplot as plt
 import datetime
 from floodsystem.datafetcher import fetch_measure_levels
+from floodsystem.analysis import polyfit
 
 def plot_water_levels(station, dt, levels):
    
@@ -26,4 +29,21 @@ def plot_water_levels(station, dt, levels):
     # Display plot
    plt.tight_layout()  # This makes sure plot does not cut off date labels
 
+   plt.show()
+
+
+#Task 2F
+def plot_water_level_with_fit(station, dates, levels, p):
+   plt.plot(dates, levels)
+
+   poly, d0 = polyfit(dates, levels, p)
+
+   plt.plot(dates, poly(mdt.date2num(np.array(dates))-d0))
+
+   plt.xlabel('date')
+   plt.ylabel('water level (m)')
+   plt.xticks(rotation=45)
+   plt.title(station.name)
+   print(station.typical_range)
+   plt.tight_layout()
    plt.show()
