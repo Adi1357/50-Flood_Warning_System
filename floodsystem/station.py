@@ -49,7 +49,8 @@ class MonitoringStation:
         
         if self.latest_level is not 0 and self.latest_level is not None:
              if self.typical_range_consistent() == True:
-                return 2*(self.latest_level/(self.typical_range[0] + self.typical_range[1]))
+                #return 2*(self.latest_level/(self.typical_range[0] + self.typical_range[1]))
+                return (self.latest_level - self.typical_range[0])/(self.typical_range[1]- self.typical_range[0])
         
         else:
             return None
