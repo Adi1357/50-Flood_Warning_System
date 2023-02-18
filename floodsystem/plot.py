@@ -38,14 +38,15 @@ def plot_water_level_with_fit(station, dates, levels, p):
 
    poly, d0 = polyfit(dates, levels, p)
 
-   plt.plot(dates, poly(mdt.date2num(np.array(dates))-d0))
+   plt.plot(dates, poly(mdt.date2num(np.array(dates))-d0), label="best-fit polynomial (degree {})\nfor water level".format(p))
 
-   plt.plot(dates, np.repeat(station.typical_range[0], len(dates)), label="Typical range low")
-   plt.plot(dates, np.repeat(station.typical_range[1], len(dates)), label="Typical range high")
+   plt.plot(dates, np.repeat(station.typical_range[1], len(dates)), label="typical high water level", color = 'red')
+   plt.plot(dates, np.repeat(station.typical_range[0], len(dates)), label="typical low water level", color = 'green')
 
    plt.xlabel('date')
    plt.ylabel('water level (m)')
    plt.xticks(rotation=45)
    plt.title(station.name)
    plt.tight_layout()
+   plt.legend()
    plt.show()
