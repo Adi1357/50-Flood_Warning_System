@@ -85,12 +85,3 @@ def test_inconsistent_typical_range_stations():
     test_inconsistentx_list = inconsistent_typical_range_stations(test_list)
     assert test_inconsistentx_list == []
     
-
-
-#Running Tests
-test_stations_by_distance()
-test_stations_within_radius()
-test_rivers_with_station()
-test_stations_by_river()
-test_rivers_by_station_number()
-test_inconsistent_typical_range_stations()

@@ -18,7 +18,9 @@ def plot_water_levels(station, dt, levels):
       date_list.append(date)
       level_list.append(level)
 
-   plt.plot(date_list, level_list)
+   plt.plot(date_list, level_list, label="water level", color = 'blue')
+   plt.plot(dates, np.repeat(station.typical_range[1], len(dates)), label="typical high water level", color = 'red')
+   plt.plot(dates, np.repeat(station.typical_range[0], len(dates)), label="typical low water level", color = 'green')
 
     # Add axis labels, rotate date labels and add plot title
    plt.xlabel('date')
@@ -28,7 +30,7 @@ def plot_water_levels(station, dt, levels):
 
     # Display plot
    plt.tight_layout()  # This makes sure plot does not cut off date labels
-
+   plt.legend()
    plt.show()
 
 

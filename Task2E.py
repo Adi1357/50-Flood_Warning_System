@@ -12,23 +12,7 @@ def run():
      update_water_levels(stations)
 
      station_list = stations_highest_rel_level(stations, 10)
-    
 
-    
-         
-
-
-    #  for station in stations_highest_rel_level(stations, 5):
-    #     dates, levels = fetch_measure_levels(station.measure_id, dt=datetime.timedelta(days=10))
-    #     date_list=[]
-    #     level_list=[]
-    #     for date, level in zip(dates, levels):
-    #         date_list.append(date)
-    #         level_list.append(level)
-        
-    #     plot_water_levels(station,10, level_list)
-
-    
      for station in station_list:
         x= station.measure_id
         dates, levels = fetch_measure_levels(x, dt=datetime.timedelta(days=10))
