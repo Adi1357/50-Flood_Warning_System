@@ -6,7 +6,9 @@ from floodsystem.geo import rivers_with_station
 from floodsystem.geo import stations_by_river
 from floodsystem.geo import rivers_by_station_number
 from floodsystem.station import inconsistent_typical_range_stations
+from floodsystem.flood import stations_level_over_threshold
 from floodsystem.station import MonitoringStation
+
 
 stations = build_station_list()
 
@@ -26,6 +28,11 @@ test_station_1 = MonitoringStation(station_id= "test_station_1", measure_id = "m
 test_station_2 = MonitoringStation(station_id= "test_station_2", measure_id = "measure_station_2", label = "some station_2", coord= (2.0, 3.0), typical_range = (-12.3, 45.45), river = "River 2", town= "My Town_2")
 test_station_3 = MonitoringStation(station_id= "test_station_3", measure_id = "measure_station_3", label = "some station_3", coord= (3.0, 4.0), typical_range = (-0.3, 4.5), river = "River 3", town= "My Town_3")
 test_station_4 = MonitoringStation(station_id= "test_station_4", measure_id = "measure_station_4", label = "some station_4", coord= (4.0, 5.0), typical_range = (-1.3, 4.45), river = "River 4", town= "My Town_4")
+
+test_station_1.latest_level = -2.3
+test_station_2.latest_level = 3.3
+test_station_3.latest_level = 5.3
+test_station_4.latest_level = 6.3
 
 test_station_5 = MonitoringStation(station_id= "test_station_5", measure_id = "measure_station_5", label = "some station_1", coord= (1.0, 2.1), typical_range = (-2.3, 3.4446), river = "River 1", town= "My Town_5")
 test_station_6 = MonitoringStation(station_id= "test_station_6", measure_id = "measure_station_6", label = "some station_2", coord= (2.0, 3.1), typical_range = (-12.3, 45.46), river = "River 1", town= "My Town_6")
@@ -84,4 +91,13 @@ def test_rivers_by_station_number():
 def test_inconsistent_typical_range_stations():
     test_inconsistentx_list = inconsistent_typical_range_stations(test_list)
     assert test_inconsistentx_list == []
+
+#Test 2B
+def test_stations_level_over_threshold():
+    test_list_over_list = stations_level_over_threshold(test_list, 7)
+    assert test_list_over_list == []
+
+
+
+
     
