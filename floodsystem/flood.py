@@ -1,7 +1,7 @@
 from floodsystem.station import MonitoringStation
 from floodsystem.utils import sorted_by_key
 
-#Task 1B:
+#Task 2B:
 def stations_level_over_threshold(stations, tol):
     level_over_thereshold_list= []
     for station in stations:
@@ -10,7 +10,7 @@ def stations_level_over_threshold(stations, tol):
            
     return level_over_thereshold_list
 
-# Task 1C:
+# Task 2C:
 def stations_highest_rel_level(stations, N):
     list_of_stations_and_relative_levels = []
     for station in stations:

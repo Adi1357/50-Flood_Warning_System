@@ -3,6 +3,8 @@
 
 import numpy as np
 import matplotlib.dates as mdt
+from floodsystem.datafetcher import fetch_measure_levels
+import datetime
 
 def polyfit(dates, levels, p):
     x = mdt.date2num(dates)
@@ -11,8 +13,5 @@ def polyfit(dates, levels, p):
     poly = np.poly1d(p_coeff)
     return poly, x[0]
 
-
-
-  
 
 
