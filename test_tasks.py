@@ -9,6 +9,8 @@ from floodsystem.station import inconsistent_typical_range_stations
 from floodsystem.flood import stations_level_over_threshold
 from floodsystem.station import MonitoringStation
 from floodsystem.plot import plot_water_levels
+from floodsystem.flood_warning import flood_warning_rel
+
 
 
 stations = build_station_list()
@@ -101,6 +103,8 @@ def test_stations_level_over_threshold():
 #Test 2E
 def test_plot_water_levels():
     assert plot_water_levels(test_station_1,10) is ValueError
+
+
 
 
 
