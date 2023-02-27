@@ -13,31 +13,30 @@ def flood_warning(station,days):
         return latest_gradient
 
 
-def stations_level_over_threshold(stations, tol):
-    level_over_thereshold_list= []
-    for station in stations:
-        if station.relative_water_level() is not None and station.relative_water_level() > tol:
-           level_over_thereshold_list.append((station, station.relative_water_level()))
+
 
 
 def consistent(stations, dt):
+   
+
+    
     consistent_list = []
     for station in stations:
-         
+
         dates, levels = fetch_measure_levels(station.measure_id, dt=datetime.timedelta(days=dt))
         date_list=[]
         level_list=[]
+
         for date, level in zip(dates, levels):
-                date_list.append(date)
-                level_list.append(level)
-        
-        if all(v is not None or 0 for v in level_list) and all(x is not None or 0 for x in date_list):
-             consistent_list.append(station)
+            date_list.append(date)
+            level_list.append(level)
+            if all(v is not None or 0 for v in level_list) and all(x is not None or 0 for x in date_list):
+                consistent_list.append(station)
     return consistent_list
 
 
      
-def flood_warning_rel(station,dt):
+def flood_warning_rel(station, dt):
         dates, levels = fetch_measure_levels(station.measure_id, dt=datetime.timedelta(days=dt))
         date_list=[]
         level_list=[]

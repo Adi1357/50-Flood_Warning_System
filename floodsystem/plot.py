@@ -5,8 +5,12 @@ import datetime
 from floodsystem.datafetcher import fetch_measure_levels
 from floodsystem.analysis import polyfit
 
-def plot_water_levels(station, dt, levels):
+def plot_water_levels(station, dt, levels = 0):
+   if levels == 0:
+      raise ValueError("Levels not provided")
    
+   
+
 
    dates, levels = fetch_measure_levels(station.measure_id, dt=datetime.timedelta(days=dt))
 
