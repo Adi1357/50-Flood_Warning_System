@@ -10,6 +10,7 @@ from floodsystem.flood import stations_level_over_threshold
 from floodsystem.station import MonitoringStation
 from floodsystem.plot import plot_water_levels
 from floodsystem.flood_warning import flood_warning_rel
+from floodsystem.flood import stations_highest_rel_level
 
 
 
@@ -42,9 +43,14 @@ test_station_6 = MonitoringStation(station_id= "test_station_6", measure_id = "m
 test_station_7 = MonitoringStation(station_id= "test_station_7", measure_id = "measure_station_7", label = "some station_3", coord= (3.0, 4.1), typical_range = (-0.3, 4.6), river = "River 1", town= "My Town_7")
 test_station_8 = MonitoringStation(station_id= "test_station_8", measure_id = "measure_station_8", label = "some station_4", coord= (4.0, 5.1), typical_range = (-1.3, 4.46), river = "River 2", town= "My Town_8")
 
+test_station_5.latest_level = 3.5
+test_station_6.latest_level = 100
+test_station_7.latest_level = 0
+test_station_8.latest_level = 3
 
-test_list= (test_station_1, test_station_2, test_station_3, test_station_4)
-test_list_2= (test_station_1, test_station_2, test_station_3, test_station_4, test_station_5, test_station_6, test_station_7, test_station_8)
+test_list = (test_station_1, test_station_2, test_station_3, test_station_4)
+test_list_2 = (test_station_1, test_station_2, test_station_3, test_station_4, test_station_5, test_station_6, test_station_7, test_station_8)
+test_list_3 = (test_station_5, test_station_6, test_station_7, test_station_8)
 
 #Test 1B
 def test_stations_by_distance():
@@ -100,11 +106,17 @@ def test_stations_level_over_threshold():
     test_list_over_list = stations_level_over_threshold(test_list, 7)
     assert test_list_over_list == []
 
+#Test 2C
+def test_stations_highest_rel_level():
+    test_result_list = stations_highest_rel_level(test_list_3,3)
+    #assert test_result_list == []
+
+
 #Test 2E
 def test_plot_water_levels():
     assert plot_water_levels(test_station_1,10) is ValueError
 
-
+test_stations_highest_rel_level()
 
 
 
