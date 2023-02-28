@@ -2,10 +2,8 @@ from floodsystem.flood_warning import flood_warning
 from floodsystem.flood_warning import flood_warning_rel
 from floodsystem.flood_warning import consistent
 from floodsystem.stationdata import build_station_list, update_water_levels
-from floodsystem.flood import stations_highest_rel_level
 from floodsystem.flood import stations_level_over_threshold
-from floodsystem.datafetcher import fetch_measure_levels
-import datetime
+
 
 def run():
     stations = build_station_list()
@@ -19,10 +17,10 @@ def run():
 
     for station in risk_list:
         if station.typical_range_consistent() == True:
-            if flood_warning(station,10) > 1 and flood_warning_rel(station, 10) == 'Severe risk':
+            if flood_warning(station,10) > -0.02 and flood_warning_rel(station, 10) == 'Severe risk':
                 severe_risk_list.append(station.name)
 
-            elif flood_warning(station,10) >= 0.01 and flood_warning_rel(station, 10) == 'High risk':
+            elif flood_warning(station,10) >= -0.1 and flood_warning_rel(station, 10) == 'High risk':
                 pass
                 #print(station.name, "High Risk")
     
